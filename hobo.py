@@ -15,7 +15,7 @@ from collections import namedtuple
 
 import blog_config
 from markdown import markdown
-from lib.bottle import route, run, view, template, error, static_file, abort
+from bottle import route, run, view, template, error, static_file, abort
 
 
 # I N I T I A L I Z A T I O N #################################################
@@ -90,7 +90,7 @@ def process_blog_posts():
                 continue
 
             # Open the file
-            file_handle = open(path + input_file, 'r')
+            file_handle = open(path + input_file, 'rb')
             contents = file_handle.read().decode('utf-8')
 
             # Find the slug
@@ -137,7 +137,7 @@ def process_blog_posts():
             # Remove the file
             file_handle.close()
 
-    KEY_LIST.extend(POSTS.keys())
+    KEY_LIST.extend(list(POSTS.keys()))
     KEY_LIST.sort(reverse=True)
 
 
