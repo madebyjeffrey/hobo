@@ -14,7 +14,7 @@ import datetime
 from collections import namedtuple
 
 import blog_config
-from lib.markdown2 import markdown
+from markdown import markdown
 from lib.bottle import route, run, view, template, error, static_file, abort
 
 
@@ -200,7 +200,7 @@ def error404(code=None):
 
 process_blog_posts()
 if USE_HEROKU:
-    run(host="0.0.0.0", port=int(os.environ.get("PORT", 80)))
+    run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
 else:
     run(host="localhost", port=8080)
 
